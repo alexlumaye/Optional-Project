@@ -1,0 +1,46 @@
+Wisc ID: ajlumaye
+GitHub ID: alexlumaye
+Points = 93
+Grade = 5 out of 5
+
+[X] correct P2 Canvas Assignment submission [none]: Yes! I am submitting right now.
+[X] clear explanations in p2-workbook.txt [none]: Yup! Adding comments to everything that I've completed!
+[X] correct P2G Canvas Assignment submission on time [none]: Yep! I have a video that I will submit.
+[X] program runs (or seems to run correctly - worth looking at error console) [final-grtown]: It works correctly as far as I can tell.
+[X] frame rate seems OK (not too slow) [final-grtown]: Frame rate is perfect it just takes a tad to load initially.
+[X] UI is there and seems to work (can lookat and ride) [final-grtown]: Yes! Lookat is a bit weird because of how lookat works but its fine!
+[X] highlight list looks OK [final-grtown]: I highlight all the objects that I made or added some feature to.
+[X] visually distinct from example [final-grtown]: Very different
+[X] theme makes sense (need explanation) [final-grtown]: It's snow themed! Kind of christmas-y but not really. Those small people are elves
+[X] cool theme bonus (need explanation) [final-grtown]: Think of yourself as inside a snowglobe.
+[X] objects created for this assignment 1, not trivial, can be identified in world (need explanation) [final-grtown]: Snowman! Has three moving parts and looks like a snowman!
+[X] objects created for this assignment 2, not trivial, can be identified in world (need explanation) [final-grtown]: House! It has a box mesh with specific uv's so that the door is only on one side, and the roof is made from BufferedGeometry.
+[X] 5 more kinds of objects 1, not trivial, can identify (need explanation) [final-grtown]: Candy Cane! It's uses a cylinder and a half-torus as well as a small circle to fill the torus in. Plus it has cool  shader animations.
+[X] 5 more kinds of objects 2, not trivial, can identify (need explanation) [final-grtown]: Car - Probably my most complex one. It uses BufferedGeometry and has an ice-y texture to fit the snow world theme.
+[ ] 5 more kinds of objects 3, not trivial, can identify (need explanation) [final-grtown]: 
+[ ] 5 more kinds of objects 4, not trivial, can identify (need explanation) [final-grtown]: 
+[ ] 5 more kinds of objects 5, not trivial, can identify (need explanation) [final-grtown]: 
+[X] has building, natural, vehicle (need explanation) [final-grtown]: YES! I have a house, "natural" would be the trees, candy canes, snow, etc. and a vehicle which is the car made of ice to fit the theme.
+[X] loaded model (need explanation) [final-grtown]: Loaded models include: The children and the trees. The children are right in the middle.
+[X] shader: identifiable and not trivial (need explanation) [final-grtown]: Yes, my shader is on the candy cane. It has a cool animation to make it look like the red and white stripes are moving up.
+[X] three behaviors you made 1, not trivial, can be identified in scene (need explanation) [final-grtown]: Snowball gravity. The children throw snowballs every 5 seconds on normal speed. The snowball is affected by gravity so it makes a cool looking arc.
+[X] three behaviors you made 2, not trivial, can be identified in scene (need explanation) [final-grtown]: The snowman has 3 rotating parts. It has the base which is rotating around the globe (basically how it moves), it has the middle section which rotates on the snowman so that it looks like the head is spinning, and it has arms that move up and down in a waving motion.
+[ ] three behaviors you made 3, not trivial, can be identified in scene (need explanation) [final-grtown]: 
+[X] at least one object is rideable / followable [final-grtown]: You can either ride the snowman as it spins (you may get dizzy), or follow the child as he throws a snowball and jumps up to do so.
+[ ] behavior that is not simple (need explanation) [final-grtown]: 
+[X] articulated figure (need explanation) [final-grtown]: YES! This is the snowman that has the three moving parts that I mentioned before (Rotating around map, mid section rotating to make the head spin, and the arms waving).
+[X] advanced thing 1: has a challenge type (need the name and number from the list) [final-grtown]:  #4 - Particle System: There are little snowflakes that are falling as time progresses :)
+[X] advanced thing 1: works properly, can be identified in the town (need explanation) [final-grtown]:  Yes, it works as you can see the snow is falling.
+[ ] advanced thing 1: points above and beyond (need explanation) [final-grtown]:
+[X] advanced thing 2: has a challenge type (need the name and number from the list) [final-grtown]: #5 - Animated Shader Effect: My candy cane, rather than just being a red and white stripes candy cane, has stripes that move up and fade as time progresses :)
+[X] advanced thing 2: works properly, can be identified in the town (need explanation) [final-grtown]: Yes, there are many candy canes around the area, all of which are animated.
+[ ] advanced thing 2: points above and beyond (need explanation) [final-grtown]: 
+[ ] advanced thing 3: has a challenge type (need the name and number from the list) [final-grtown]: 
+[ ] advanced thing 3: works properly, can be identified in the town (need explanation) [final-grtown]: 
+[ ] advanced thing 3: points above and beyond (need explanation) [final-grtown]: 
+[ ] advanced thing 4: has a challenge type (need the name and number from the list) [final-grtown]: 
+[ ] advanced thing 4: works properly, can be identified in the town (need explanation) [final-grtown]: 
+[ ] advanced thing 4: points above and beyond (need explanation) [final-grtown]: 
+[ ] advanced thing 5: has a challenge type (need the name and number from the list) [final-grtown]: 
+[ ] advanced thing 5: works properly, can be identified in the town (need explanation) [final-grtown]: 
+[ ] advanced thing 5: points above and beyond (need explanation) [final-grtown]: 
