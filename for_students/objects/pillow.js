@@ -7,6 +7,7 @@ let pillow_mesh = null;
 new GLTFLoader().load("./models/Pillow.glb", (obj) => {
     pillow_mesh = obj.scene.children[0]
     pillow_mesh.scale.set(10, 10, 10);
+    pillow_mesh.children[0].material.color = new T.Color(1, 1, 1);
 });
 
 export class Pillow extends GrObject {

@@ -31,10 +31,18 @@ export class Zombie extends GrObject {
         this.player = params.player;
         this.action = null;
         this.isDead = false;
+        this.toDelete = false;
+        this.opacity = 0;
+        this.animationIndex = -1;
 
         const loader = new GLTFLoader();
         loader.load("./models/Zombie.glb", (obj) => {
             let zombie_mesh = obj.scene.children[0]
+            zombie_mesh.children[1].material.transparent = true;
+            zombie_mesh.children[1].material.opacity = 0;
+            this.material = zombie_mesh.children[1].material
+            this.material.transparent = true;
+            this.material.opacity = 0;
             zombie.add(zombie_mesh);
 
             // This code creates a mixer for the zombie and pulls the animations from the object and basically pastes it onto the zombie so that it can be animated.
@@ -53,6 +61,8 @@ export class Zombie extends GrObject {
         this.action = this.actions[index]
         this.action?.reset();
 
+        this.animationIndex = index;
+
         if (index == 11) this.zombie.translateZ(3)
 
         this.action?.play();
@@ -66,6 +76,8 @@ export class Zombie extends GrObject {
     stepWorld(delta, timeOfDay) {
         if (!this.mixer || !this.player?.player) return;
 
+        this.material.opacity += 0.01
+
         // Rotate towards the player once the game starts
         this.zombie.lookAt(this.player.player.position);
 
@@ -73,20 +85,33 @@ export class Zombie extends GrObject {
 
         // Check if the zombie gets hit by a bag
         this.player?.pillows.forEach(pillow => {
-            if (distance(pillow.obj.position.x, pillow.obj.position.z, this.zombie.position.x, this.zombie.position.z) < 2) {
+            if (this.isDead) return;
+            if (distance(pillow.obj.position, this.zombie.position) < 2) {
                 this.stopAnimation(11);
                 this.playAnimation(3)
+                this.isDead = true;
             }
         });
 
         if (!this.action?.isRunning()) {
+            if (this.isDead) this.toDelete = true;
+
+            // If the zombie touches the player then player is dead
+            if (distance(this.player.player.position, this.zombie.position) < 2) {
+                // Make sure the zombie isn't transparent as well so they dont get spawnkilled
+                if (this.material.opacity > 1) {
+                    this.player.dead = true;
+                }
+            }
+
             this.playAnimation(11);
         }
     }
 }
 
-function distance(x1, z1, x2, z2) {
-    let xDistance = x2 - x1;
-    let zDistance = z2 - z1;
-    return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(zDistance, 2));
+function distance(pos1, pos2) {
+    let xDistance = pos2.x - pos1.x
+    let yDistance = pos2.y - pos1.y;
+    let zDistance = pos2.z - pos1.z;
+    return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(zDistance, 2) + Math.pow(yDistance / 2, 2));
 }

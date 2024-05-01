@@ -30,6 +30,8 @@ export class Player extends GrObject {
         this.pillows = [];
         this.camera = params.camera;
         this.rotation = 0;
+        this.dead = false;
+        this.animationIndex = -1;
 
         const loader = new GLTFLoader();
         loader.load("./models/Adventurer.glb", (obj) => {
@@ -42,6 +44,7 @@ export class Player extends GrObject {
             obj.animations.forEach((clip, index) => {
                 const action = this.mixer.clipAction(clip);
                 action.repetitions = 1;
+                if (index == 0) action.clampWhenFinished = true;
                 this.actions[index] = action;
             });
         });
@@ -57,6 +60,7 @@ export class Player extends GrObject {
     }
     playAnimation(index) {
         this.action = this.actions[index]
+        this.animationIndex = index;
         this.action?.reset();
 
         // Code here
@@ -71,6 +75,15 @@ export class Player extends GrObject {
 
     stepWorld(delta, timeOfDay) {
         if (!this.player || !this.mixer) return;
+        
+        this.mixer.update(delta / 1000);
+
+        // If player dies
+        if (this.dead) {
+            if (this.animationIndex == 16) this.stopAnimation(16);
+            if (this.animationIndex != 0) this.playAnimation(0);
+            return;
+        }
 
         // Update player
         this.player.lookAt(new T.Vector3(this.camera.position.x, 0, this.camera.position.z));
@@ -87,8 +100,12 @@ export class Player extends GrObject {
         // Movement
         if (pressedKeys["KeyW"] || pressedKeys["KeyS"] || pressedKeys["KeyA"] || pressedKeys["KeyD"]) {
             this.player.translateZ(delta / 200);
+            this.player.position.set(Math.max(Math.min(48, this.player.position.x), -48), this.player.position.y, Math.max(Math.min(48, this.player.position.z), -48))
             if (!this.action?.isRunning()) this.playAnimation(16);
-        } else this.stopAnimation(16);
+        } else {
+            this.stopAnimation(16);
+        }
+            
 
         if (pressedKeys["ShiftLeft"] && this.pillows.length != 1) {
             let pillow = new Pillow().objects[0];
@@ -113,13 +130,11 @@ export class Player extends GrObject {
             pillow.obj.translateZ(delta / 50)
             pillow.obj.translateY(pillow.dy);
 
-            if (pillow.obj.position.y < 0) {
+            if (pillow.obj.position.y < -10) {
                 this.group.remove(pillow.obj);
                 return false;
             }
             return true;
         })
-
-        this.mixer.update(delta / 1000);
     }
 }
